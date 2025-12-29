@@ -75,6 +75,22 @@ h3 {
   margin-top: var(--spacing-sm);
 }
 
+/* Section À propos - titres centrés en noir */
+.about-content h3 {
+  text-align: center;
+  color: var(--text);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.about-content h3:first-child {
+  margin-top: 0;
+}
+
+.about-content p {
+  margin-bottom: var(--spacing-md);
+}
+
 p {
   margin-bottom: var(--spacing-sm);
   color: var(--muted);
