@@ -325,22 +325,24 @@ nav a.active {
    ============================================ */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-md);
   margin: var(--spacing-md) 0;
 }
 
 .card {
   background-color: var(--card);
-  border: 1px solid var(--border);
+  border: 2px solid rgba(0, 0, 0, 0.12);
   border-radius: 8px;
   padding: var(--spacing-md);
   transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  border-color: var(--brand-orange);
 }
 
 .card h3 {
