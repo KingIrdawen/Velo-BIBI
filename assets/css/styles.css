@@ -244,24 +244,33 @@ nav a.active {
    Hero Section
    ============================================ */
 .hero {
-  background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-yellow) 100%);
-  color: white;
-  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--bg);
+  padding: var(--spacing-md) var(--spacing-md);
   text-align: center;
   margin-bottom: var(--spacing-lg);
-  border-radius: 8px;
 }
 
 .hero h1 {
-  color: white;
-  font-size: 3rem;
   margin-bottom: var(--spacing-sm);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.2;
+}
+
+.brand-title {
+  color: var(--brand-orange);
+}
+
+.brand-bibi {
+  color: var(--brand-yellow);
 }
 
 .hero p {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.25rem;
+  color: var(--muted);
+  font-size: 1.1rem;
   margin-bottom: var(--spacing-md);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-cta {
@@ -302,13 +311,13 @@ nav a.active {
 
 .btn-secondary {
   background-color: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid var(--brand-orange);
+  color: var(--brand-orange);
 }
 
 .btn-secondary:hover {
-  background-color: white;
-  color: var(--brand-orange);
+  background-color: var(--brand-orange);
+  color: white;
 }
 
 /* ============================================
@@ -609,6 +618,23 @@ footer {
   margin-top: 0;
 }
 
+/* Grille Contact en 2 colonnes */
+.footer-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.footer-contact-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-contact-col p {
+  margin-bottom: 0.5rem;
+}
+
 .footer-section p {
   color: var(--muted);
   font-size: 0.9rem;
@@ -839,6 +865,12 @@ footer {
   .social-links {
     margin-top: 0.75rem;
     justify-content: flex-start;
+  }
+  
+  /* Grille Contact en une colonne sur mobile */
+  .footer-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 }
 
