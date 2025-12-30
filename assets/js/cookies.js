@@ -68,11 +68,25 @@
     showBanner();
   }
 
+  // Modifier le choix (réafficher la bannière)
+  function modifyChoice() {
+    // Réafficher la bannière pour permettre de choisir à nouveau
+    showBanner();
+    // Optionnel : scroll vers la bannière pour améliorer l'UX
+    setTimeout(() => {
+      const banner = document.getElementById(COOKIE_BANNER_ID);
+      if (banner) {
+        banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 100);
+  }
+
   // Initialisation
   function initCookies() {
     // Vérifier si on est sur la page cookies.html
     const isCookiesPage = window.location.pathname.includes('cookies.html');
     
+    // Afficher la bannière uniquement si aucun choix n'existe
     if (!hasConsent() && !isCookiesPage) {
       showBanner();
     }
@@ -81,6 +95,7 @@
     const acceptBtn = document.getElementById('cookie-accept');
     const refuseBtn = document.getElementById('cookie-refuse');
     const resetBtn = document.getElementById('cookie-reset');
+    const modifyBtn = document.getElementById('modify-cookie-choice');
 
     if (acceptBtn) {
       acceptBtn.addEventListener('click', acceptCookies);
@@ -94,14 +109,24 @@
       resetBtn.addEventListener('click', resetConsent);
     }
 
-    // Charger les scripts si déjà accepté
+    // Lien "Modifier mon choix cookies" dans le footer
+    if (modifyBtn) {
+      modifyBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modifyChoice();
+      });
+    }
+
+    // Charger les scripts UNIQUEMENT si accepté
+    // IMPORTANT : ne pas charger de scripts si refusé
     if (getConsent() === 'accepted') {
       loadTrackingScripts();
     }
   }
 
-  // Exposer la fonction de réinitialisation globalement
+  // Exposer les fonctions globalement
   window.resetCookieConsent = resetConsent;
+  window.modifyCookieChoice = modifyChoice;
 
   // Initialisation au chargement
   document.addEventListener('DOMContentLoaded', initCookies);

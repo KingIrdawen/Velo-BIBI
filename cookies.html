@@ -59,22 +59,42 @@
         <div class="separator"></div>
         
         <div style="max-width: 800px; margin: 0 auto;">
-          <h2>Qu'est-ce qu'un cookie ?</h2>
+          <h2>Qu'est-ce qu'un cookie ou traceur ?</h2>
           <p>
-            Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, tablette, smartphone) lors de la visite d'un site web. 
+            Un cookie (ou traceur) est un petit fichier texte déposé sur votre terminal (ordinateur, tablette, smartphone) lors de la visite d'un site web. 
             Il permet au site de reconnaître votre navigateur et de mémoriser certaines informations vous concernant.
           </p>
-          
-          <h2>Quels cookies utilisons-nous ?</h2>
           <p>
-            Ce site utilise uniquement des cookies essentiels pour le fonctionnement du site et la mémorisation de vos préférences :
+            Le stockage local (localStorage) fonctionne de manière similaire : il permet de stocker des données directement dans votre navigateur 
+            pour mémoriser vos préférences.
           </p>
-          <ul style="margin-left: var(--spacing-md); color: var(--muted);">
-            <li><strong>Cookies de consentement :</strong> pour mémoriser votre choix concernant l'acceptation ou le refus des cookies.</li>
-            <li><strong>Cookies de préférences :</strong> pour sauvegarder vos préférences d'utilisation du site.</li>
-          </ul>
-          <p style="margin-top: var(--spacing-md); padding: var(--spacing-sm); background-color: var(--bg); border-left: 3px solid var(--brand-orange);">
-            <strong>Important :</strong> Aucun cookie publicitaire, aucun traceur marketing, aucune mesure d'audience tiers n'est utilisé sur ce site.
+          
+          <h2>Cookies et stockage local utilisés sur ce site</h2>
+          <p>
+            Ce site utilise uniquement des cookies et/ou le stockage local strictement nécessaires au fonctionnement du site :
+          </p>
+          <table style="width: 100%; margin: var(--spacing-md) 0; border-collapse: collapse; border: 1px solid var(--border);">
+            <thead>
+              <tr style="background-color: var(--bg);">
+                <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--border);">Nom</th>
+                <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--border);">Finalité</th>
+                <th style="padding: var(--spacing-sm); text-align: left; border: 1px solid var(--border);">Durée</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: var(--spacing-sm); border: 1px solid var(--border);"><code>vb_cookie_consent</code></td>
+                <td style="padding: var(--spacing-sm); border: 1px solid var(--border);">Mémoriser votre choix de consentement aux cookies (accepté ou refusé)</td>
+                <td style="padding: var(--spacing-sm); border: 1px solid var(--border);">Jusqu'à suppression par l'utilisateur</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top: var(--spacing-md); padding: var(--spacing-md); background-color: var(--bg); border-left: 3px solid var(--brand-orange);">
+            <strong>Important :</strong><br>
+            • Aucun cookie publicitaire n'est utilisé sur ce site.<br>
+            • Aucune mesure d'audience tiers (Google Analytics, etc.) n'est utilisée.<br>
+            • Aucun traceur marketing n'est déposé.
           </p>
           
           <h2>Gestion de vos cookies</h2>
@@ -97,13 +117,14 @@
           
           <h2>Cookies tiers</h2>
           <p>
-            Actuellement, ce site n'utilise aucun cookie tiers (tels que Google Analytics, réseaux sociaux, etc.). 
-            Si cela devait changer à l'avenir, nous vous en informerions et vous demanderions à nouveau votre consentement.
+            Ce site n'utilise aucun cookie tiers (tels que Google Analytics, réseaux sociaux embarqués, etc.). 
+            Si cela devait changer à l'avenir, nous vous en informerions et vous demanderions à nouveau votre consentement explicite.
           </p>
           
           <h2>Durée de conservation</h2>
           <p>
-            Les cookies utilisés sur ce site sont conservés pour une durée maximale de 13 mois, conformément à la réglementation en vigueur.
+            Le stockage local utilisé sur ce site (<code>vb_cookie_consent</code>) est conservé jusqu'à suppression par l'utilisateur 
+            (via le bouton "Réinitialiser mon choix" ci-dessous ou via les paramètres du navigateur), conformément à la réglementation en vigueur.
           </p>
           
           <div class="text-center" style="margin-top: var(--spacing-lg); padding: var(--spacing-md); background-color: var(--card); border: 1px solid var(--border); border-radius: 8px;">
@@ -153,7 +174,8 @@
           <p>
             <a href="mentions-legales.html">Mentions légales</a> |
             <a href="politique-de-confidentialite.html">Politique de confidentialité</a> |
-            <a href="cookies.html">Cookies - Modifier mon choix</a>
+            <a href="cookies.html">Cookies</a> |
+            <a href="#" id="modify-cookie-choice">Modifier mon choix cookies</a>
           </p>
           <p>© Vélos BIBI — Tous droits réservés</p>
         </div>
@@ -165,7 +187,12 @@
   <div id="cookie-banner" class="cookie-banner">
     <div class="cookie-banner-content">
       <div class="cookie-banner-text">
-        <p>Ce site utilise uniquement des cookies strictement nécessaires pour mémoriser vos préférences. Aucun cookie publicitaire, aucun traceur marketing, aucune mesure d'audience tiers n'est utilisé.</p>
+        <h3 class="cookie-banner-title">Gestion des cookies</h3>
+        <p>Nous utilisons uniquement des cookies et/ou le stockage local strictement nécessaires au fonctionnement du site (par exemple, mémoriser votre choix de consentement). Aucun cookie publicitaire ni de mesure d'audience tiers n'est déposé sans votre accord. Vous pouvez accepter ou refuser, et modifier votre choix à tout moment depuis la page Cookies.</p>
+        <div class="cookie-banner-links">
+          <a href="cookies.html">En savoir plus</a>
+          <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
+        </div>
       </div>
       <div class="cookie-banner-actions">
         <button id="cookie-accept" class="btn-cookie btn-cookie-accept">Accepter</button>
