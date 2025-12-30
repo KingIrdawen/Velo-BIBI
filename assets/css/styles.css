@@ -266,18 +266,18 @@ nav a.active {
   margin-bottom: var(--spacing-lg);
 }
 
-.hero h1 {
+.hero-logo {
   margin-bottom: var(--spacing-sm);
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.brand-title {
-  color: var(--brand-orange);
-}
-
-.brand-bibi {
-  color: var(--brand-yellow);
+.hero-logo img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .hero p {
@@ -378,7 +378,7 @@ nav a.active {
 }
 
 .card .btn {
-  margin-top: auto;
+  margin-top: var(--spacing-md);
 }
 
 .card img {
@@ -845,8 +845,8 @@ footer {
     font-size: 14px;
   }
   
-  .hero h1 {
-    font-size: 2rem;
+  .hero-logo img {
+    max-width: 200px;
   }
   
   .hero p {
