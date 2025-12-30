@@ -617,7 +617,7 @@ nav a.active {
    Footer
    ============================================ */
 footer {
-  background-color: var(--card);
+  background-color: var(--bg);
   border-top: 1px solid var(--border);
   padding: 1.5rem 1rem;
   margin-top: var(--spacing-xl);
