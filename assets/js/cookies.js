@@ -59,7 +59,6 @@
   function loadTrackingScripts() {
     // Cette fonction serait utilisée pour charger Google Analytics, etc.
     // Pour l'instant, elle reste vide car il n'y a pas de tracking dans ce projet
-    console.log('Scripts de tracking autorisés (mais non implémentés)');
   }
 
   // Réinitialiser le consentement (pour la page cookies.html)
