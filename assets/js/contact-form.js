@@ -19,6 +19,19 @@
   const emailError = document.getElementById('email-error');
   const subjectError = document.getElementById('subject-error');
   const messageError = document.getElementById('message-error');
+  const privacyConsent = document.getElementById('privacy-consent');
+  
+  // Zone pour les messages d'accessibilité
+  let liveRegion = document.getElementById('form-live-region');
+  if (!liveRegion) {
+    liveRegion = document.createElement('div');
+    liveRegion.id = 'form-live-region';
+    liveRegion.setAttribute('role', 'status');
+    liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.setAttribute('aria-atomic', 'true');
+    liveRegion.className = 'sr-only';
+    form.appendChild(liveRegion);
+  }
 
   // Expression régulière pour valider l'email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -95,9 +108,14 @@
       hideError(messageError);
     }
 
+    // Validation du consentement RGPD
+    if (privacyConsent && !privacyConsent.checked) {
+      isValid = false;
+    }
+
     // Activer/désactiver le bouton
     if (submitBtn) {
-      if (isValid) {
+      if (isValid && (!privacyConsent || privacyConsent.checked)) {
         submitBtn.disabled = false;
         submitBtn.classList.remove('btn-disabled');
       } else {
@@ -106,7 +124,7 @@
       }
     }
 
-    return isValid;
+    return isValid && (!privacyConsent || privacyConsent.checked);
   }
 
   // Validation en temps réel
@@ -166,6 +184,13 @@
     validateForm();
   });
 
+  // Validation du consentement RGPD
+  if (privacyConsent) {
+    privacyConsent.addEventListener('change', function() {
+      validateForm();
+    });
+  }
+
   // Validation initiale
   validateForm();
 
@@ -196,16 +221,26 @@
 
       if (response.ok) {
         // Succès
+        if (liveRegion) {
+          liveRegion.textContent = 'Message envoyé avec succès. Nous revenons vers vous rapidement.';
+        }
         alert('Message envoyé. Nous revenons vers vous rapidement.');
         form.reset();
         validateForm(); // Réinitialiser l'état du bouton
+        if (liveRegion) {
+          setTimeout(() => { liveRegion.textContent = ''; }, 5000);
+        }
       } else {
         // Erreur
         throw new Error('Erreur lors de l\'envoi');
       }
     } catch (error) {
       // Erreur réseau ou autre
-      alert('Une erreur est survenue. Merci de réessayer ou d\'écrire à velosbibi@gmail.com');
+      const errorMsg = 'Une erreur est survenue. Merci de réessayer ou d\'écrire à velosbibi@gmail.com';
+      if (liveRegion) {
+        liveRegion.textContent = errorMsg;
+      }
+      alert(errorMsg);
       
       // Réactiver le bouton
       if (submitBtn) {

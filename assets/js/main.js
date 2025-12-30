@@ -13,25 +13,58 @@
     
     if (!burger || !nav) return;
     
+    const navLinks = nav.querySelectorAll('a');
+    const firstLink = navLinks[0];
+    
+    function openMenu() {
+      burger.classList.add('active');
+      nav.classList.add('active');
+      burger.setAttribute('aria-expanded', 'true');
+      // Empêcher le scroll du body
+      document.body.style.overflow = 'hidden';
+      // Déplacer le focus sur le premier lien
+      if (firstLink) {
+        setTimeout(() => firstLink.focus(), 100);
+      }
+    }
+    
+    function closeMenu() {
+      burger.classList.remove('active');
+      nav.classList.remove('active');
+      burger.setAttribute('aria-expanded', 'false');
+      // Restaurer le scroll du body
+      document.body.style.overflow = '';
+      // Remettre le focus sur le bouton burger
+      burger.focus();
+    }
+    
     burger.addEventListener('click', function() {
-      burger.classList.toggle('active');
-      nav.classList.toggle('active');
+      const isOpen = burger.classList.contains('active');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
     
     // Fermer le menu au clic sur un lien
-    const navLinks = nav.querySelectorAll('a');
     navLinks.forEach(link => {
       link.addEventListener('click', function() {
-        burger.classList.remove('active');
-        nav.classList.remove('active');
+        closeMenu();
       });
+    });
+    
+    // Fermer le menu avec Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && burger.classList.contains('active')) {
+        closeMenu();
+      }
     });
     
     // Fermer le menu au clic en dehors
     document.addEventListener('click', function(e) {
-      if (!nav.contains(e.target) && !burger.contains(e.target)) {
-        burger.classList.remove('active');
-        nav.classList.remove('active');
+      if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('active')) {
+        closeMenu();
       }
     });
   }

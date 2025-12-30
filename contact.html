@@ -25,6 +25,9 @@
   <meta name="twitter:description" content="Contactez Vélos BIBI à Épinal. Adresse, téléphone, email. Atelier vélo Épinal pour réparation, vente et électrification de vélos.">
   <meta name="twitter:image" content="https://velosbibi.fr/assets/img/Logo.jpeg">
   
+  <!-- Preconnect pour Formspree -->
+  <link rel="preconnect" href="https://formspree.io" crossorigin>
+  
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -33,15 +36,15 @@
       <div class="header-container">
         <div class="logo">
           <a href="index.html">
-            <img src="assets/img/Logo.jpeg" alt="Vélos BIBI - Logo">
+            <img src="assets/img/Logo.jpeg" alt="Vélos BIBI - Logo" width="150" height="75" decoding="async">
           </a>
         </div>
-        <button class="burger-menu" aria-label="Menu de navigation">
+        <button class="burger-menu" aria-label="Menu de navigation" aria-expanded="false" aria-controls="main-nav">
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <nav>
+        <nav id="main-nav">
           <ul>
             <li><a href="index.html">Accueil</a></li>
             <li><a href="velos.html">Vélos</a></li>
@@ -104,9 +107,15 @@
             <div class="form-group" style="text-align: center;">
               <button type="submit" id="submit-btn" class="btn" disabled>Envoyer le message</button>
             </div>
-            <p style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: var(--spacing-sm);">
-              En envoyant ce formulaire, vous acceptez que les informations saisies soient utilisées pour vous répondre. 
-              Voir la <a href="politique-de-confidentialite.html">Politique de confidentialité</a>.
+            <div class="form-group" style="text-align: center; margin-top: var(--spacing-sm);">
+              <label style="font-size: 0.85rem; color: var(--muted); font-weight: normal; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: var(--spacing-xs);">
+                <input type="checkbox" id="privacy-consent" name="privacy-consent" required style="width: auto; margin: 0;">
+                <span>J'ai lu et j'accepte la <a href="politique-de-confidentialite.html">Politique de confidentialité</a></span>
+              </label>
+            </div>
+            <p style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: var(--spacing-xs);">
+              En envoyant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter. 
+              <a href="politique-de-confidentialite.html">En savoir plus</a>.
             </p>
           </form>
         </div>
