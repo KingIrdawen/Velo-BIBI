@@ -977,28 +977,30 @@ footer {
   .footer-container {
     flex-direction: column;
     gap: 1.5rem;
+    align-items: center;
   }
   
   .footer-section:first-child,
   .footer-section:nth-child(2) {
-    text-align: left;
+    text-align: center;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
   }
   
   .footer-section:nth-child(2) {
-    align-items: flex-start;
+    align-items: center;
   }
   
   .social-links {
     margin-top: 0.75rem;
-    justify-content: flex-start;
+    justify-content: center;
   }
   
   /* Grille Contact en une colonne sur mobile */
   .footer-contact-grid {
     grid-template-columns: 1fr;
     gap: 0.75rem;
+    text-align: center;
   }
 }
 
