@@ -170,13 +170,50 @@
   validateForm();
 
   // Gestion de la soumission du formulaire
-  form.addEventListener('submit', function(e) {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    if (validateForm()) {
-      alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.\n\nNote : Ce formulaire est actuellement en démonstration. Pour un envoi réel, une configuration backend serait nécessaire.');
-      form.reset();
-      validateForm(); // Réinitialiser l'état du bouton
+    if (!validateForm()) {
+      return;
+    }
+
+    // Désactiver le bouton pendant l'envoi
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add('btn-disabled');
+      submitBtn.textContent = 'Envoi en cours...';
+    }
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Succès
+        alert('Message envoyé. Nous revenons vers vous rapidement.');
+        form.reset();
+        validateForm(); // Réinitialiser l'état du bouton
+      } else {
+        // Erreur
+        throw new Error('Erreur lors de l\'envoi');
+      }
+    } catch (error) {
+      // Erreur réseau ou autre
+      alert('Une erreur est survenue. Merci de réessayer ou d\'écrire à velosbibi@gmail.com');
+      
+      // Réactiver le bouton
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('btn-disabled');
+        submitBtn.textContent = 'Envoyer le message';
+        validateForm();
+      }
     }
   });
 })();

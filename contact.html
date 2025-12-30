@@ -75,7 +75,8 @@
 
         <div class="contact-form">
           <h2 style="text-align: center; margin-bottom: var(--spacing-md);">Formulaire de contact</h2>
-          <form action="#" method="post" id="contact-form">
+          <form action="https://formspree.io/f/xwvkjbjb" method="POST" id="contact-form">
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-group">
               <label for="name">Nom *</label>
               <input type="text" id="name" name="name" required minlength="3">
@@ -103,6 +104,10 @@
             <div class="form-group" style="text-align: center;">
               <button type="submit" id="submit-btn" class="btn" disabled>Envoyer le message</button>
             </div>
+            <p style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: var(--spacing-sm);">
+              En envoyant ce formulaire, vous acceptez que les informations saisies soient utilisées pour vous répondre. 
+              Voir la <a href="politique-de-confidentialite.html">Politique de confidentialité</a>.
+            </p>
           </form>
         </div>
 
@@ -164,7 +169,7 @@
     <div class="cookie-banner-content">
       <div class="cookie-banner-text">
         <h3 class="cookie-banner-title">Gestion des cookies</h3>
-        <p>Nous utilisons uniquement des cookies et/ou le stockage local strictement nécessaires au fonctionnement du site (par exemple, mémoriser votre choix de consentement). Aucun cookie publicitaire ni de mesure d'audience tiers n'est déposé sans votre accord. Vous pouvez accepter ou refuser, et modifier votre choix à tout moment depuis la page Cookies.</p>
+        <p>Nous n'utilisons aucun cookie publicitaire ni traceur marketing. Aucune mesure d'audience tiers. Le seul stockage utilisé sert à mémoriser votre choix.</p>
         <div class="cookie-banner-links">
           <a href="cookies.html">En savoir plus</a>
           <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
