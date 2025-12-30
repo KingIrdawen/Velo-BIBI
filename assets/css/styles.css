@@ -326,6 +326,24 @@ nav a.active {
   outline-offset: 2px;
 }
 
+.btn:disabled,
+.btn.btn-disabled {
+  background-color: var(--muted);
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn:disabled:hover,
+.btn.btn-disabled:hover {
+  background-color: var(--muted);
+  color: white;
+  transform: none;
+  box-shadow: none;
+}
+
 .btn-secondary {
   background-color: transparent;
   border: 2px solid var(--brand-orange);
@@ -586,6 +604,24 @@ nav a.active {
 .form-group textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+.error-message {
+  display: none;
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: var(--spacing-xs);
+  font-weight: 400;
+}
+
+.form-group input:invalid:not(:focus):not(:placeholder-shown),
+.form-group textarea:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #d32f2f;
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+  border-color: #4caf50;
 }
 
 .contact-info {
