@@ -236,7 +236,7 @@
       }
     } catch (error) {
       // Erreur réseau ou autre
-      const errorMsg = 'Une erreur est survenue. Merci de réessayer ou d\'écrire à velosbibi@gmail.com';
+      const errorMsg = 'Une erreur est survenue. Merci de réessayer ou d\'écrire à contact@velosbibi.fr';
       if (liveRegion) {
         liveRegion.textContent = errorMsg;
       }
