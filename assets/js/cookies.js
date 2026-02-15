@@ -90,6 +90,16 @@
       showBanner();
     }
 
+    // Gérer le scroll vers l'ancrage si on arrive sur cookies.html avec #cookie-reset-section
+    if (isCookiesPage && window.location.hash === '#cookie-reset-section') {
+      setTimeout(() => {
+        const resetSection = document.getElementById('cookie-reset-section');
+        if (resetSection) {
+          resetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+
     // Boutons d'action
     const acceptBtn = document.getElementById('cookie-accept');
     const refuseBtn = document.getElementById('cookie-refuse');
@@ -111,8 +121,16 @@
     // Lien "Modifier mon choix cookies" dans le footer
     if (modifyBtn) {
       modifyBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        modifyChoice();
+        // Si on est déjà sur cookies.html, empêcher le défaut et scroller
+        if (isCookiesPage) {
+          e.preventDefault();
+          const resetSection = document.getElementById('cookie-reset-section');
+          if (resetSection) {
+            resetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+        // Sinon, laisser le navigateur naviguer vers cookies.html#cookie-reset-section
+        // (ne pas empêcher le défaut)
       });
     }
 
