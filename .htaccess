@@ -1,0 +1,14 @@
+# Configuration pour Vélos BIBI
+# Hébergement OVH mutualisé - Site statique
+
+# Définir index.html comme fichier d'index par défaut
+DirectoryIndex index.html
+
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Redirection 301 de /index.html vers / (racine)
+# Cette règle ne s'applique qu'à l'accès explicite à /index.html
+# et ne redirige pas les autres pages .html
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
